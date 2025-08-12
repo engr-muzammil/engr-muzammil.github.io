@@ -1,60 +1,188 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Muzammil Ahmed</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Muzammil Ahmed — Software Engineer</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <script defer src="https://kit.fontawesome.com/yourkitid.js"></script> <!-- optional FontAwesome kit -->
 </head>
-<body>
-    <header>
-        <h1>Muzammil Ahmed</h1>
-        <nav>
+<body class="light">
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="#">Muzammil Ahmed</a>
+      <nav id="main-nav" class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#blogs">Blogs</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button id="menu-toggle" aria-label="Toggle menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <h1>Muzammil Ahmed</h1>
+          <p class="subtitle">Staff Software Consultant II — Full-Stack Engineer (Node / NestJS / React / .NET)</p>
+          <p class="lead">6+ years building scalable web apps, microservices, and DevOps pipelines.</p>
+          <div class="hero-cta">
+            <a class="btn primary" href="#contact">Contact Me</a>
+            <a class="btn ghost" href="Canada Resume Muzammil Ahmed.pdf" target="_blank">Download CV</a>
+          </div>
+          <div class="contact-row">
+            <a href="mailto:engr.muzammil95@gmail.com">engr.muzammil95@gmail.com</a>
+            <a href="https://www.linkedin.com/in/muzammil-ahmed" target="_blank">LinkedIn</a>
+            <a href="https://github.com/engr-muzammil" target="_blank">GitHub</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="card intro-card">
+            <h3>Quick Facts</h3>
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+              <li>Master of Project Management</li>
+              <li>Experienced in AWS & Azure</li>
+              <li>Testing: Jest, Playwright</li>
+              <li>Volunteering: Empower Foundation</li>
             </ul>
-        </nav>
-    </header>
-    
-    <section id="about" class="hero">
-        <h2>Welcome to My Portfolio</h2>
-        <p>I'm a passionate Full-Stack Developer specialized in modern web technologies.</p>
-    </section>
-    
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skill">
-            <span>JavaScript</span>
-            <div class="progress"><div class="progress-bar" style="width: 90%"></div></div>
+          </div>
         </div>
-        <div class="skill">
-            <span>React</span>
-            <div class="progress"><div class="progress-bar" style="width: 85%"></div></div>
+      </div>
+    </section>
+
+    <!-- ABOUT / OBJECTIVE -->
+    <section id="about" class="section container">
+      <h2>Objective</h2>
+      <p>Full-stack software engineer with 6+ years of experience in scalable web app development, microservices architecture, and cloud deployments. Passionate about building impactful products in collaborative environments.</p>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section container">
+      <h2>Core Skills</h2>
+      <div class="skills-grid">
+        <div class="skill">Node.js / TypeScript</div>
+        <div class="skill">NestJS / Express</div>
+        <div class="skill">React / Next.js</div>
+        <div class="skill">.NET (C#)</div>
+        <div class="skill">Postgres / MongoDB</div>
+        <div class="skill">AWS / Azure</div>
+        <div class="skill">Docker / Kubernetes</div>
+        <div class="skill">CI/CD / Jenkins / GitHub Actions</div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section container">
+      <h2>Experience</h2>
+      <div class="cards-grid">
+        <article class="exp-card">
+          <header>
+            <h3>Staff Software Consultant II — 10Pearls</h3>
+            <time>Aug 2021 - Aug 2025</time>
+          </header>
+          <p>Spearheaded full-stack development using Next.js + NestJS, designed CI/CD pipelines, integrated third-party services, and improved test coverage to 90%.</p>
+        </article>
+
+        <article class="exp-card">
+          <header>
+            <h3>Senior Software Engineer — Sybrid</h3>
+            <time>Jun 2020 - Aug 2021</time>
+          </header>
+          <p>Led product development and built offline-first sync, multi-tenant architecture, and CI/CD pipelines using Azure DevOps.</p>
+        </article>
+
+        <article class="exp-card">
+          <header>
+            <h3>Software Engineer — TPS Worldwide</h3>
+            <time>Nov 2019 - Apr 2020</time>
+          </header>
+          <p>Built banking integrations, REST/SOAP services, and performance optimized PL/SQL reports.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS (Carousel) -->
+    <section id="projects" class="section container">
+      <h2>Highlighted Projects</h2>
+
+      <!-- Swiper -->
+      <div class="swiper-container">
+        <div class="swiper-wrapper" id="projects-swiper">
+          <!-- JS will insert .swiper-slide items here -->
         </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+        <!-- JS inserts project cards here for desktop -->
+      </div>
     </section>
-    
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project-card">Project 1</div>
-        <div class="project-card">Project 2</div>
+
+    <!-- BLOGS — Medium -->
+    <section id="blogs" class="section container">
+      <h2>Latest from Medium</h2>
+      <div id="medium-list" class="blog-list">
+        <div class="loader">Loading posts…</div>
+      </div>
+      <div class="note">If posts don't appear, please follow the repo instructions in README (CORS proxy or rss2json key).</div>
     </section>
-    
-    <section id="contact">
-        <h2>Contact</h2>
-        <form>
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message"></textarea>
-            <button type="submit">Send</button>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section container">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <form id="contact-form" class="contact-form" method="POST" action="https://formspree.io/f/your-form-id">
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            <span>Subject</span>
+            <input type="text" name="subject" />
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="6" required></textarea>
+          </label>
+          <div class="form-row">
+            <button type="submit" class="btn primary">Send Message</button>
+            <div id="form-status" class="form-status"></div>
+          </div>
         </form>
+
+        <aside class="contact-info card">
+          <h3>Contact Info</h3>
+          <p><strong>Phone:</strong> +1 (289) 652-5821</p>
+          <p><strong>Email:</strong> engr.muzammil95@gmail.com</p>
+          <p><strong>Address:</strong> Mississauga, ON, Canada</p>
+          <h4>Volunteering</h4>
+          <p>Empower Foundation — Career counselling & community work</p>
+        </aside>
+      </div>
     </section>
-    
-    <footer>
-        <p>&copy; 2025 Muzammil Ahmed</p>
+
+    <footer class="site-footer container">
+      <p>© <span id="year"></span> Muzammil Ahmed — Built with ♥ • <a href="https://engr-muzammil.github.io" target="_blank">engr-muzammil.github.io</a></p>
     </footer>
+  </main>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
