@@ -1,183 +1,932 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Muzammil Ahmed — Software Engineer</title>
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muzammil Ahmed - Full-Stack Software Engineer</title>
+    <meta name="description" content="Full-stack software engineer with 6+ years of experience in scalable web app development, microservices architecture, and cloud deployments.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #20c997;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #151515;
+            --darkest-bg: #2a2a2a;
+            --text-light: #e9ecef;
+            --text-muted: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: rgba(10, 10, 10, 0.95) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(10, 10, 10, 0.98) !important;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #adb5bd !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            padding: 4px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            animation: float 6s ease-in-out infinite;
+            object-fit: cover;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .typing-animation {
+            overflow: hidden;
+            border-right: 3px solid var(--primary-color);
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--primary-color); }
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            background-color: var(--darker-bg);
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--dark-bg);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .skill-card, .project-card, .blog-card {
+            background: var(--darkest-bg);
+            border: 1px solid #343a40;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .skill-card:hover, .project-card:hover, .blog-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(13, 110, 253, 0.2);
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .project-img {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), #ffc107);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        /* Buttons */
+        .btn-custom {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(13, 110, 253, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 3px solid var(--darker-bg);
+        }
+
+        /* Contact */
+        .contact-info {
+            background: var(--darkest-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid #343a40;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: var(--darkest-bg);
+            border: 1px solid #343a40;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-color: transparent;
+            transform: translateY(-3px);
+            color: white;
+        }
+
+        /* Carousel */
+        .carousel-control-prev, .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .carousel-control-prev {
+            left: -25px;
+        }
+
+        .carousel-control-next {
+            right: -25px;
+        }
+
+        /* Scroll to top */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(13, 110, 253, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section {
+                text-align: center;
+            }
+            
+            .profile-img {
+                width: 200px;
+                height: 200px;
+                margin-bottom: 2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+    </style>
 </head>
-<body class="light">
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="logo" href="#">Muzammil Ahmed</a>
-      <nav id="main-nav" class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#blogs">Blogs</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div class="hero-left">
-          <h1>Muzammil Ahmed</h1>
-          <p class="subtitle">Staff Software Consultant II — Full-Stack Engineer (Node / NestJS / React / .NET)</p>
-          <p class="lead">6+ years building scalable web apps, microservices, and DevOps pipelines.</p>
-          <div class="hero-cta">
-            <a class="btn primary" href="#contact">Contact Me</a>
-            <a class="btn ghost" href="Canada Resume Muzammil Ahmed.pdf" target="_blank">Download CV</a>
-          </div>
-          <div class="contact-row">
-            <a href="mailto:engr.muzammil95@gmail.com">engr.muzammil95@gmail.com</a>
-            <a href="https://www.linkedin.com/in/muzammil-ahmed" target="_blank">LinkedIn</a>
-            <a href="https://github.com/engr-muzammil" target="_blank">GitHub</a>
-          </div>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="bi bi-code-slash me-2"></i>
+                Muzammil Ahmed
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blogs">Blogs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="hero-right">
-          <div class="card intro-card">
-            <h3>Quick Facts</h3>
-            <ul>
-              <li>Master of Project Management</li>
-              <li>Experienced in AWS & Azure</li>
-              <li>Testing: Jest, Playwright</li>
-              <li>Volunteering: Empower Foundation</li>
-            </ul>
-          </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="display-4 fw-bold mb-4 text-white">
+                            Hi, I'm <span class="text-primary">Muzammil Ahmed</span>
+                        </h1>
+                        <h2 class="h3 mb-4 typing-animation text-light">Full-Stack Software Engineer</h2>
+                        <p class="lead mb-4 text-light">
+                            6+ years of experience in scalable web app development, microservices architecture, and cloud deployments. 
+                            Passionate about building impactful products in collaborative environments.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#contact" class="btn-custom">
+                                <i class="bi bi-envelope me-2"></i>
+                                Get In Touch
+                            </a>
+                            <a href="#projects" class="btn btn-outline-primary btn-lg">
+                                <i class="bi bi-eye me-2"></i>
+                                View Work
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400" 
+                         alt="Muzammil Ahmed - Software Engineer" 
+                         class="profile-img">
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- ABOUT / OBJECTIVE -->
-    <section id="about" class="section container">
-      <h2>Objective</h2>
-      <p>Full-stack software engineer with 6+ years of experience in scalable web app development, microservices architecture, and cloud deployments. Passionate about building impactful products in collaborative environments.</p>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section container">
-      <h2>Core Skills</h2>
-      <div class="skills-grid">
-        <div class="skill">Node.js / TypeScript</div>
-        <div class="skill">NestJS / Express</div>
-        <div class="skill">React / Next.js</div>
-        <div class="skill">.NET (C#)</div>
-        <div class="skill">Postgres / MongoDB</div>
-        <div class="skill">AWS / Azure</div>
-        <div class="skill">Docker / Kubernetes</div>
-        <div class="skill">CI/CD / Jenkins / GitHub Actions</div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section container">
-      <h2>Experience</h2>
-      <div class="cards-grid">
-        <article class="exp-card">
-          <header>
-            <h3>Staff Software Consultant II — 10Pearls</h3>
-            <time>Aug 2021 - Aug 2025</time>
-          </header>
-          <p>Spearheaded full-stack development using Next.js + NestJS, designed CI/CD pipelines, integrated third-party services, and improved test coverage to 90%.</p>
-        </article>
-
-        <article class="exp-card">
-          <header>
-            <h3>Senior Software Engineer — Sybrid</h3>
-            <time>Jun 2020 - Aug 2021</time>
-          </header>
-          <p>Led product development and built offline-first sync, multi-tenant architecture, and CI/CD pipelines using Azure DevOps.</p>
-        </article>
-
-        <article class="exp-card">
-          <header>
-            <h3>Software Engineer — TPS Worldwide</h3>
-            <time>Nov 2019 - Apr 2020</time>
-          </header>
-          <p>Built banking integrations, REST/SOAP services, and performance optimized PL/SQL reports.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- PROJECTS (Carousel) -->
-    <section id="projects" class="section container">
-      <h2>Highlighted Projects</h2>
-
-      <!-- Swiper -->
-      <div class="swiper-container">
-        <div class="swiper-wrapper" id="projects-swiper">
-          <!-- JS will insert .swiper-slide items here -->
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title display-5 fw-bold">About Me</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="text-center mb-5">
+                        <p class="lead text-light">
+                            Full-stack software engineer with expertise in building scalable web applications, microservices architecture, 
+                            and cloud deployments. I have a proven track record of leading projects, improving system performance, 
+                            and enhancing user experience across various industries.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="h4 fw-semibold mb-4 text-white">Experience</h3>
+                        <div>
+                            <div class="timeline-item">
+                                <h5 class="h5 fw-semibold text-primary mb-2">Staff Software Consultant II</h5>
+                                <p class="text-muted mb-3">10Pearls | Aug 2021 - Aug 2025</p>
+                                <p class="text-light">
+                                    Spearheaded full-stack application development using React, Next.js, Node.js, and NestJS. 
+                                    Achieved 90% code coverage and integrated third-party services including Swan Bank API and SendGrid.
+                                </p>
+                            </div>
+                            <div class="timeline-item">
+                                <h5 class="h5 fw-semibold text-primary mb-2">Senior Software Engineer</h5>
+                                <p class="text-muted mb-3">Sybrid Private Limited | Jun 2020 - Aug 2021</p>
+                                <p class="text-light">
+                                    Led product development using TDD practices, built scalable APIs in Node.js, and implemented 
+                                    Multi-Tenant Architecture. Developed Offline-First mechanisms enhancing web usability by 30%.
+                                </p>
+                            </div>
+                            <div class="timeline-item">
+                                <h5 class="h5 fw-semibold text-primary mb-2">Software Engineer</h5>
+                                <p class="text-muted mb-3">TPS Worldwide | Nov 2019 - Apr 2020</p>
+                                <p class="text-light">
+                                    Led full-cycle development of banking solutions, designed RESTful APIs and SOAP Web Services, 
+                                    and created dynamic strategic reports for major banks using SAP Crystal Reports.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
-
-      <div class="projects-grid" id="projects-grid">
-        <!-- JS inserts project cards here for desktop -->
-      </div>
     </section>
 
-    <!-- BLOGS — Medium -->
-    <section id="blogs" class="section container">
-      <h2>Latest from Medium</h2>
-      <div id="medium-list" class="blog-list">
-        <div class="loader">Loading posts…</div>
-      </div>
-      <div class="note">If posts don't appear, please follow the repo instructions in README (CORS proxy or rss2json key).</div>
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title display-5 fw-bold">Core Skills</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="skill-card text-center">
+                        <div class="skill-icon mx-auto">
+                            <i class="bi bi-server"></i>
+                        </div>
+                        <h5 class="fw-semibold mb-3 text-white">Backend</h5>
+                        <p class="text-muted">Node.js, NestJS, .NET (C#), Ruby on Rails, TypeScript</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="skill-card text-center">
+                        <div class="skill-icon mx-auto">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <h5 class="fw-semibold mb-3 text-white">Frontend</h5>
+                        <p class="text-muted">React, Next.js, TypeScript, Material UI, Tailwind CSS</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="skill-card text-center">
+                        <div class="skill-icon mx-auto">
+                            <i class="bi bi-database"></i>
+                        </div>
+                        <h5 class="fw-semibold mb-3 text-white">Databases</h5>
+                        <p class="text-muted">PostgreSQL, MongoDB, MySQL, DynamoDB, Cosmos DB</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="skill-card text-center">
+                        <div class="skill-icon mx-auto">
+                            <i class="bi bi-cloud"></i>
+                        </div>
+                        <h5 class="fw-semibold mb-3 text-white">Cloud & DevOps</h5>
+                        <p class="text-muted">AWS, Azure, Docker, Kubernetes, CI/CD, Jenkins</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section container">
-      <h2>Contact</h2>
-      <div class="contact-grid">
-        <form id="contact-form" class="contact-form" method="POST" action="https://formspree.io/f/your-form-id">
-          <label>
-            <span>Name</span>
-            <input type="text" name="name" required />
-          </label>
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" required />
-          </label>
-          <label>
-            <span>Subject</span>
-            <input type="text" name="subject" />
-          </label>
-          <label>
-            <span>Message</span>
-            <textarea name="message" rows="6" required></textarea>
-          </label>
-          <div class="form-row">
-            <button type="submit" class="btn primary">Send Message</button>
-            <div id="form-status" class="form-status"></div>
-          </div>
-        </form>
-
-        <aside class="contact-info card">
-          <h3>Contact Info</h3>
-          <p><strong>Phone:</strong> +1 (289) 652-5821</p>
-          <p><strong>Email:</strong> engr.muzammil95@gmail.com</p>
-          <p><strong>Address:</strong> Mississauga, ON, Canada</p>
-          <h4>Volunteering</h4>
-          <p>Empower Foundation — Career counselling & community work</p>
-        </aside>
-      </div>
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title display-5 fw-bold">Featured Projects</h2>
+            </div>
+            
+            <div id="projectsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row g-4">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="project-card">
+                                    <div class="project-img">
+                                        <i class="bi bi-heart"></i>
+                                    </div>
+                                    <div class="p-4">
+                                        <h5 class="fw-semibold text-primary mb-3">LaunchGood</h5>
+                                        <p class="text-light mb-3">Core fundraising platform with scalable APIs, real-time workflows, and secure payment processing using Node.js, NestJS, and PostgreSQL.</p>
+                                        <div class="mb-3">
+                                            <span class="badge bg-primary me-1">Node.js</span>
+                                            <span class="badge bg-primary me-1">NestJS</span>
+                                            <span class="badge bg-primary me-1">PostgreSQL</span>
+                                            <span class="badge bg-primary">AWS</span>
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm">
+                                            <i class="bi bi-eye me-1"></i>
+                                            View Project
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="project-card">
+                                    <div class="project-img">
+                                        <i class="bi bi-shield"></i>
+                                    </div>
+                                    <div class="p-4">
+                                        <h5 class="fw-semibold text-primary mb-3">Sophos Integrations</h5>
+                                        <p class="text-light mb-3">Security platform integrations enabling seamless data exchange and automated threat detection workflows with enhanced response capabilities.</p>
+                                        <div class="mb-3">
+                                            <span class="badge bg-success me-1">Node.js</span>
+                                            <span class="badge bg-success me-1">Kafka</span>
+                                            <span class="badge bg-success me-1">DynamoDB</span>
+                                            <span class="badge bg-success">Terraform</span>
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm">
+                                            <i class="bi bi-eye me-1"></i>
+                                            View Project
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="project-card">
+                                    <div class="project-img">
+                                        <i class="bi bi-gift"></i>
+                                    </div>
+                                    <div class="p-4">
+                                        <h5 class="fw-semibold text-primary mb-3">SaveStrike</h5>
+                                        <p class="text-light mb-3">Digital wishlist app offering cashback from 500+ brands. Users can save items, organize wishlists, and earn up to 15% cashback.</p>
+                                        <div class="mb-3">
+                                            <span class="badge bg-danger me-1">Ruby on Rails</span>
+                                            <span class="badge bg-danger me-1">React</span>
+                                            <span class="badge bg-danger me-1">Redux</span>
+                                            <span class="badge bg-danger">PostgreSQL</span>
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm">
+                                            <i class="bi bi-eye me-1"></i>
+                                            View Project
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row g-4">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="project-card">
+                                    <div class="project-img">
+                                        <i class="bi bi-cup-hot"></i>
+                                    </div>
+                                    <div class="p-4">
+                                        <h5 class="fw-semibold text-primary mb-3">BistroMD</h5>
+                                        <p class="text-light mb-3">Complete meal planning platform providing customizable, doctor-designed meal plans for weight loss with seamless user experience.</p>
+                                        <div class="mb-3">
+                                            <span class="badge bg-warning me-1">React</span>
+                                            <span class="badge bg-warning me-1">Tailwind</span>
+                                            <span class="badge bg-warning me-1">Ruby on Rails</span>
+                                            <span class="badge bg-warning">.NET</span>
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm">
+                                            <i class="bi bi-eye me-1"></i>
+                                            View Project
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="project-card">
+                                    <div class="project-img">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="p-4">
+                                        <h5 class="fw-semibold text-primary mb-3">SocioMee</h5>
+                                        <p class="text-light mb-3">Social platform enabling feed posts, global podcasts, talent showcases, and group interactions with scalable architecture.</p>
+                                        <div class="mb-3">
+                                            <span class="badge bg-info me-1">Node.js</span>
+                                            <span class="badge bg-info me-1">MySQL</span>
+                                            <span class="badge bg-info me-1">React</span>
+                                            <span class="badge bg-info">React Native</span>
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm">
+                                            <i class="bi bi-eye me-1"></i>
+                                            View Project
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="project-card">
+                                    <div class="project-img">
+                                        <i class="bi bi-shop"></i>
+                                    </div>
+                                    <div class="p-4">
+                                        <h5 class="fw-semibold text-primary mb-3">Concave POS</h5>
+                                        <p class="text-light mb-3">Cloud-based enterprise Point of Sale system streamlining billing, inventory management, and customer data with real-time analytics.</p>
+                                        <div class="mb-3">
+                                            <span class="badge bg-secondary me-1">React</span>
+                                            <span class="badge bg-secondary me-1">Next.js</span>
+                                            <span class="badge bg-secondary me-1">MongoDB</span>
+                                            <span class="badge bg-secondary">Azure</span>
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm">
+                                            <i class="bi bi-eye me-1"></i>
+                                            View Project
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#projectsCarousel" data-bs-slide="prev">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#projectsCarousel" data-bs-slide="next">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+        </div>
     </section>
 
-    <footer class="site-footer container">
-      <p>© <span id="year"></span> Muzammil Ahmed — Built with ♥ • <a href="https://engr-muzammil.github.io" target="_blank">engr-muzammil.github.io</a></p>
+    <!-- Blogs Section -->
+    <section id="blogs" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title display-5 fw-bold">Medium Blogs</h2>
+                <p class="lead text-light">Sharing insights on software development, technology trends, and best practices</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-file-code text-success fs-3 me-3"></i>
+                            <div>
+                                <small class="text-muted">Tech Tutorial</small>
+                                <div class="small fw-medium text-light">Dec 15, 2024</div>
+                            </div>
+                        </div>
+                        <h5 class="fw-semibold mb-3 text-white">Building Scalable Microservices with Node.js and Docker</h5>
+                        <p class="text-muted mb-3">A comprehensive guide to architecting and deploying microservices using modern containerization techniques and best practices for production environments.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-success">Microservices</span>
+                            <button class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-cloud-upload text-primary fs-3 me-3"></i>
+                            <div>
+                                <small class="text-muted">Cloud Computing</small>
+                                <div class="small fw-medium text-light">Nov 28, 2024</div>
+                            </div>
+                        </div>
+                        <h5 class="fw-semibold mb-3 text-white">AWS Lambda vs Azure Functions: A Developer's Perspective</h5>
+                        <p class="text-muted mb-3">Comparing serverless computing platforms from real-world experience, performance metrics, and cost analysis to help you choose the right solution.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-primary">Serverless</span>
+                            <button class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-shield text-warning fs-3 me-3"></i>
+                            <div>
+                                <small class="text-muted">Security</small>
+                                <div class="small fw-medium text-light">Nov 10, 2024</div>
+                            </div>
+                        </div>
+                        <h5 class="fw-semibold mb-3 text-white">Implementing MITRE ATT&CK Framework in Modern Applications</h5>
+                        <p class="text-muted mb-3">Learn how to integrate threat detection and classification using the MITRE ATT&CK matrix for enhanced security posture in enterprise applications.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-warning">Security</span>
+                            <button class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-graph-up text-info fs-3 me-3"></i>
+                            <div>
+                                <small class="text-muted">Performance</small>
+                                <div class="small fw-medium text-light">Oct 22, 2024</div>
+                            </div>
+                        </div>
+                        <h5 class="fw-semibold mb-3 text-white">Optimizing React Applications: From 3s to 300ms Load Times</h5>
+                        <p class="text-muted mb-3">Real-world performance optimization techniques that reduced our application load time by 90%, including code splitting, lazy loading, and caching strategies.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-info">React</span>
+                            <button class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-database text-danger fs-3 me-3"></i>
+                            <div>
+                                <small class="text-muted">Database</small>
+                                <div class="small fw-medium text-light">Oct 05, 2024</div>
+                            </div>
+                        </div>
+                        <h5 class="fw-semibold mb-3 text-white">PostgreSQL vs MongoDB: Choosing the Right Database for Your Project</h5>
+                        <p class="text-muted mb-3">A detailed comparison based on 5+ years of experience with both databases, covering performance, scalability, and use case scenarios.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-danger">Database</span>
+                            <button class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-gear text-secondary fs-3 me-3"></i>
+                            <div>
+                                <small class="text-muted">DevOps</small>
+                                <div class="small fw-medium text-light">Sep 18, 2024</div>
+                            </div>
+                        </div>
+                        <h5 class="fw-semibold mb-3 text-white">CI/CD Best Practices: Lessons from 50+ Production Deployments</h5>
+                        <p class="text-muted mb-3">Essential CI/CD practices learned from managing deployments across multiple projects, including automated testing, rollback strategies, and monitoring.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-secondary">DevOps</span>
+                            <button class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#" class="btn-custom">
+                    <i class="bi bi-medium me-2"></i>
+                    View All Articles on Medium
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title display-5 fw-bold">Let's Work Together</h2>
+                <p class="lead text-light">Ready to build something amazing? Let's discuss your next project.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-info text-center">
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-6">
+                                <i class="bi bi-envelope text-primary fs-1 mb-3"></i>
+                                <h5 class="fw-semibold mb-2 text-white">Email</h5>
+                                <p class="text-muted mb-3">engr.muzammil95@gmail.com</p>
+                                <button class="btn btn-outline-primary btn-sm">Send Email</button>
+                            </div>
+                            <div class="col-md-6">
+                                <i class="bi bi-telephone text-success fs-1 mb-3"></i>
+                                <h5 class="fw-semibold mb-2 text-white">Phone</h5>
+                                <p class="text-muted mb-3">+1 (289) 652-5821</p>
+                                <button class="btn btn-outline-success btn-sm">Call Now</button>
+                            </div>
+                            <div class="col-12">
+                                <i class="bi bi-geo-alt text-info fs-1 mb-3"></i>
+                                <h5 class="fw-semibold mb-2 text-white">Location</h5>
+                                <p class="text-light">Mississauga, ON, Canada</p>
+                            </div>
+                        </div>
+                        
+                        <hr class="my-5">
+                        
+                        <div class="social-links mb-4">
+                            <a href="https://linkedin.com/in/muzammil-ahmed" target="_blank" title="LinkedIn">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/muzammil-ahmed" target="_blank" title="GitHub">
+                                <i class="bi bi-github"></i>
+                            </a>
+                            <a href="#" target="_blank" title="Medium">
+                                <i class="bi bi-medium"></i>
+                            </a>
+                            <a href="#" target="_blank" title="Twitter">
+                                <i class="bi bi-twitter"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap justify-content-center gap-3">
+                            <a href="#" class="btn-custom">
+                                <i class="bi bi-download me-2"></i>
+                                Download Resume
+                            </a>
+                            <button class="btn btn-outline-primary">
+                                <i class="bi bi-calendar me-2"></i>
+                                Schedule Meeting
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-muted mb-0">&copy; 2024 Muzammil Ahmed. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted mb-0">
+                        Built with <i class="bi bi-heart-fill text-danger"></i> using Bootstrap 5
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
-  </main>
 
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
-  <script src="script.js" defer></script>
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navbarHeight = 80;
+                    const targetPosition = target.offsetTop - navbarHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Auto-start carousel
+        const carousel = new bootstrap.Carousel(document.querySelector('#projectsCarousel'), {
+            interval: 5000,
+            wrap: true
+        });
+    </script>
 </body>
 </html>
