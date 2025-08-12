@@ -1,1 +1,81 @@
+:root{
+  --bg: #0f1724;
+  --card: #0b1220;
+  --muted: #94a3b8;
+  --accent: #00d4ff;
+  --glass: rgba(255,255,255,0.03);
+  --maxw: 1100px;
+  --radius: 12px;
+  --gap: 1rem;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+*{box-sizing:border-box}
+body{margin:0;color:#e6eef7;background:linear-gradient(180deg,#071226 0%, #071627 60%);line-height:1.5}
+.container{max-width:var(--maxw);margin:0 auto;padding:1.25rem}
+.nav{position:sticky;top:0;z-index:40;background:linear-gradient(180deg, rgba(7,9,14,0.6), rgba(7,9,14,0.2));backdrop-filter: blur(6px)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0}
+.logo{color:#fff;font-weight:700;text-decoration:none}
+.nav-links{display:flex;gap:1rem}
+.nav-links a{color:var(--muted);text-decoration:none;padding:.35rem .6rem;border-radius:8px;font-size:.95rem}
+.nav-links a:hover{background:var(--glass);color:#fff}
+
+/* Hero */
+.hero{padding:3rem 0;background: radial-gradient(circle at 10% 10%, rgba(0,212,255,0.06), transparent 10%), transparent}
+.hero-grid{display:grid;grid-template-columns:1fr 360px;gap:2rem;align-items:center}
+.hero h1{font-size:2.1rem;margin:0 0 .25rem}
+.subtitle{color:var(--accent);font-weight:600}
+.lead{color:var(--muted);margin:1rem 0 1.25rem}
+.btn{padding:.6rem 1rem;border-radius:10px;text-decoration:none;display:inline-block}
+.btn.primary{background:linear-gradient(90deg,var(--accent),#7effb2);color:#042228;font-weight:700}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+.intro-card{background:rgba(255,255,255,0.02);padding:1rem;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+
+/* sections */
+.section{padding:3rem 0}
+h2{margin:0 0 1rem;font-size:1.25rem;color:#e6f6ff}
+.skills-grid{display:flex;flex-wrap:wrap;gap:.6rem}
+.skill{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));padding:.6rem .9rem;border-radius:10px;font-weight:600}
+
+/* cards grid */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.exp-card{background:rgba(255,255,255,0.02);padding:1rem;border-radius:12px}
+.exp-card header{display:flex;justify-content:space-between;align-items:center}
+
+/* projects swiper */
+.swiper-container{margin:1rem 0 2rem;padding:1rem;border-radius:12px;background:rgba(255,255,255,0.02)}
+.swiper-slide{display:flex;align-items:center;justify-content:center;height:220px; border-radius:10px}
+
+/* blogs list */
+.blog-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.blog-card{background:rgba(255,255,255,0.02);padding:1rem;border-radius:10px;min-height:120px}
+.blog-card h4{margin:0 0 .5rem}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 320px;gap:1rem}
+.contact-form{background:rgba(255,255,255,0.02);padding:1rem;border-radius:12px}
+.contact-form label{display:block;margin-bottom:.6rem}
+.contact-form input, .contact-form textarea{width:100%;padding:.5rem;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#fff}
+.contact-info{padding:1rem}
+
+/* footer */
+.site-footer{padding:2rem 0;color:var(--muted);text-align:center}
+
+/* small screen */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  #menu-toggle{display:inline-block}
+  .container{padding:.75rem}
+  .contact-grid{grid-template-columns:1fr}
+}
+
+/* simple theme (light variant) */
+body.light{color:#062028;background:#f6fbff}
+body.light .nav{background:#fff}
+body.light .logo{color:#062028}
+body.light .nav-links a{color:#3b5060}
+body.light .intro-card{background:#fff}
+body.light .skill{background:#f0f6fb}
+body.light .exp-card{background:#fff}
 
